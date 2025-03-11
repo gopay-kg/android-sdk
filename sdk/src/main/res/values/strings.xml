@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">GoPayApp</string>
+    <string name="payment_app_list_search_label">Название Банка</string>
+    <string name="payment_app_not_installed_message">Не удается открыть выбранное приложение, скорее всего оно не установлено на ваше устройство</string>
+    <string name="payment_app_list_getting_error">Не удается получить список платежных приложений, попробуйте позже!</string>
+    <string name="get_payment_error">Не удается получить информацию об оплате.</string>
+    <string name="http_error_500">Произошла не предвиденная ошибка при обращение к платежному сервису</string>
+    <string name="http_error_404">Попытка обращения к несуществующему ресурсу</string>
+    <string name="http_error_unknown">Не предвиденная ошибка HTTP</string>
+    <string name="api_error_not_found">Ресурс не найден</string>
+    <string name="api_error_unknown">Непредвиденная ошибка API</string>
+    <!-- Payment Status Screen -->
+    <string name="payment_error_retry">Попробовать еще раз</string>
+    <string name="payment_error_cancel">Отмена</string>
+    <string name="payment_status_icon_width">100</string>
+    <string name="payment_status_icon_height">100</string>
+    <string name="payment_status_icon_padding_bottom">20</string>
+    <string name="payment_status_icon_inner_padding">20</string>
+    <string name="payment_status_icon_border_width">3</string>
+    <string name="payment_status_font_size">18</string>
+    <string name="payment_success_message">Оплата завершена успешно</string>
+    <string name="payment_failed_message">Оплата не удалась</string>
+    <string name="payment_expired_message">Время оплаты истекло</string>
+    <string name="payment_pending_message">Оплата в процессе</string>
+    <string name="payment_loading_message">Загрузка информации об оплате</string>
+</resources>
