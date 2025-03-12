@@ -25,7 +25,7 @@ pluginManagement {
 
 dependencies {
     // ...
-    implementation("com.github.gopay-kg:android-sdk:v0.0.1") // ✔️
+    implementation("com.github.gopay-kg:android-sdk:v0.0.2") // ✔️
     // ...
 }
 ```
