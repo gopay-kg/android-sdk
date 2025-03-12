@@ -9,6 +9,7 @@
     <string name="http_error_unknown">Не предвиденная ошибка HTTP</string>
     <string name="api_error_not_found">Ресурс не найден</string>
     <string name="api_error_unknown">Непредвиденная ошибка API</string>
+    <string name="api_error_unreachable">Сервер API не доступен, проверьте соединение с интернетом или попробуйте позже</string>
     <!-- Payment Status Screen -->
     <string name="payment_error_retry">Попробовать еще раз</string>
     <string name="payment_error_cancel">Отмена</string>

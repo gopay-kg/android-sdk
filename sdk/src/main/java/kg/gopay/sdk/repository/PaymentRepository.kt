@@ -26,6 +26,6 @@ class PaymentRepository(private val client: RetrofitClient) : BaseRepository() {
     }
 
     suspend fun createPayment(request: CreatePaymentRequest): PaymentResponse {
-        return client.apiService.createPayment(request)
+        return handleResponse( call = { client.apiService.createPayment(request) })
     }
 }

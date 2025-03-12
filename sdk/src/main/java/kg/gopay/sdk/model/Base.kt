@@ -1,7 +1,5 @@
 package kg.gopay.sdk.model
 
-import retrofit2.HttpException
-
 enum class ResponseStatus(val value: String) {
     OK("OK"),
     FAIL("FAIL")
@@ -43,6 +41,5 @@ interface BaseResponse {
 class ApiException(
     val code: ResponseCode,
     val repository: String,
-    val httpException: HttpException? = null,
     message: String
 ) : Exception(message)

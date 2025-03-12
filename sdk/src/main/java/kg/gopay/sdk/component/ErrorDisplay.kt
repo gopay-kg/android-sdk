@@ -17,27 +17,25 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kg.gopay.sdk.R
-import kg.gopay.sdk.model.ApiException
-import kg.gopay.sdk.model.ResponseCode
+import retrofit2.HttpException
+import java.net.SocketTimeoutException
 
 @Composable
-fun ErrorDisplay(error: ApiException, repeat: () -> Unit, close: () -> Unit) {
-    var message = ""
-    if (error.httpException !== null) {
-        message = stringResource(
-            when (error.httpException.code()) {
+fun ErrorDisplay(error: Exception, repeat: () -> Unit, close: () -> Unit) {
+    val message = if (error is HttpException) {
+        stringResource(
+            when (error.code()) {
                 404 -> R.string.http_error_404
                 500 -> R.string.http_error_500
                 else -> R.string.http_error_unknown
             }
         )
     } else {
-        message = stringResource(
-            when (error.code) {
-                ResponseCode.NOT_FOUND -> R.string.api_error_not_found
-                else -> R.string.api_error_unknown
-            }
-        )
+        if (error is SocketTimeoutException) {
+            stringResource(R.string.api_error_unreachable)
+        } else {
+            error.message!!
+        }
     }
 
     Column(

@@ -5,8 +5,8 @@ import kg.gopay.sdk.model.PaymentAppPlatform
 import kg.gopay.sdk.model.PaymentAppRequest
 import kg.gopay.sdk.model.PaymentAppResponse
 
-class PaymentAppRepository(private val client: RetrofitClient) {
+class PaymentAppRepository(private val client: RetrofitClient): BaseRepository() {
     suspend fun getPaymentApps(platform: PaymentAppPlatform = PaymentAppPlatform.ANY): PaymentAppResponse {
-        return client.apiService.getPaymentApps(PaymentAppRequest(platform = platform))
+        return handleResponse ( call = { client.apiService.getPaymentApps(PaymentAppRequest(platform = platform)) })
     }
 }

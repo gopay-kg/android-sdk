@@ -10,19 +10,23 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import kg.gopay.sdk.GoPaySDK
-import kg.gopay.sdk.model.ApiException
 import kg.gopay.sdk.model.Payment
 import kg.gopay.sdk.model.PaymentListItem
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PaymentAppList(isOpened: Boolean, close: () -> Unit, orderId: String) {
+fun PaymentAppList(
+    paymentId: String? = null,
+    orderId: String? = null,
+    isOpened: Boolean,
+    close: () -> Unit
+) {
     if (isOpened) {
         val apps = remember { mutableStateOf<List<PaymentListItem>>(emptyList()) }
         val payment = remember { mutableStateOf<Payment?>(null) }
         val filteredApps = remember { mutableStateOf<List<PaymentListItem>>(emptyList()) }
-        val error = remember { mutableStateOf<ApiException?>(null) }
+        val error = remember { mutableStateOf<Exception?>(null) }
         val isLoading = remember { mutableStateOf(true) }
 
         val coroutineScope = rememberCoroutineScope()
@@ -32,11 +36,11 @@ fun PaymentAppList(isOpened: Boolean, close: () -> Unit, orderId: String) {
             error.value = null
             coroutineScope.launch {
                 try {
-                    payment.value = GoPaySDK.getPayment(orderId = orderId)
+                    payment.value = GoPaySDK.getPayment(paymentId, orderId)
                     apps.value = GoPaySDK.getPaymentAppItems(payment.value)
                     filteredApps.value = apps.value
                     isLoading.value = false
-                } catch (e: ApiException) {
+                } catch (e: Exception) {
                     isLoading.value = false
                     error.value = e
                 }
@@ -45,7 +49,6 @@ fun PaymentAppList(isOpened: Boolean, close: () -> Unit, orderId: String) {
 
         ModalBottomSheet(onDismissRequest = close) {
             LaunchedEffect(Unit) {
-                println("Load from render")
                 load()
             }
 
