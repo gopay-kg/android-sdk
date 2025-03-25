@@ -14,7 +14,7 @@ object GoPaySDK {
     private lateinit var helper: HelperContainer
     private var apiKey: String? = null
     private var apiSecretKey: String? = null
-    private const val apiUrl = "https://api.gopay.kg/"
+    private const val apiUrl = "https://api.gopay.kg/v1/"
     private const val apiHost = "api.gopay.kg"
 
     fun initialize(
