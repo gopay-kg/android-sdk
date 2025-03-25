@@ -22,12 +22,19 @@ data class PaymentListItem(
 )
 
 enum class PaymentAppPlatform(val value: String) {
+    @SerializedName("Android")
     ANDROID("Android"),
+
+    @SerializedName("iOs")
     IOS("iOS"),
+
+    @SerializedName("any")
     ANY("any")
 }
 
-data class PaymentAppRequest(val platform: PaymentAppPlatform)
+data class PaymentAppRequest(
+    @SerializedName("platform") val platform: PaymentAppPlatform
+)
 
 class PaymentAppResponse(
     @SerializedName("code") override val code: String,
